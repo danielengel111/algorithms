@@ -1,12 +1,14 @@
 public class DoubleLinkedNode
 {
-    private DoubleLinkedNode parent;
-    private DoubleLinkedNode son;
+    public DoubleLinkedNode parent;
+    public DoubleLinkedNode son;
+    public GraphNode value;
 
-    public DoubleLinkedNode(DoubleLinkedNode parent, DoubleLinkedNode son)
+    public DoubleLinkedNode(DoubleLinkedNode parent, DoubleLinkedNode son, GraphNode value)
     {
         this.parent = parent;
         this.son = son;
+        this.value = value;
     }
 
 }
