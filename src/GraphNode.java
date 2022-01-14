@@ -4,10 +4,11 @@ public class GraphNode
     public DoubleLinkedNode InNeighbors;
     public int key;
 
-    public GraphNode()
+    public GraphNode(int key)
     {
         this.OutNeighbors = null;
         this.InNeighbors = null;
+        this.key = key;
     }
 
     public int getKey()
