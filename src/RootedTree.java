@@ -12,7 +12,7 @@ public class RootedTree
     {
 
     }
-    public void preorderPrint()
+    public void preorderPrint(DataOutputStream out)
     {
 
     }
