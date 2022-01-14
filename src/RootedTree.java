@@ -3,10 +3,11 @@ import java.io.IOException;
 
 public class RootedTree
 {
-    public RootedTree()
-    {
-
+    private RootedTreeNode root;
+    public RootedTree(){
+        this.root = null;
     }
+
     public void printByLayer(DataOutputStream out)
     {
 
