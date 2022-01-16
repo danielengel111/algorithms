@@ -8,6 +8,18 @@ public class RootedTree
         this.root = null;
     }
 
+    public RootedTree(RootedTreeNode root){
+        this.root=root;
+    }
+
+    public RootedTreeNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(RootedTreeNode root) {
+        this.root = root;
+    }
+
     public void printByLayer(DataOutputStream out)throws IOException
     {
         Queue<RootedTreeNode> q = new Queue<>();
@@ -41,10 +53,30 @@ public class RootedTree
             // if we'll need to remove the final new line then add if(q.isEmpty())
             out.writeBytes("\n");
         }
+        // perhaps add out.flush()
     }
     public void preorderPrint(DataOutputStream out)throws IOException
     {
-
+        this.preorder(out, true);
     }
-
+    private void preorder(DataOutputStream out, boolean couldBeLast)throws IOException{
+        if(this.root == null)
+            return;
+        out.writeBytes(String.valueOf(this.root.getKey()));
+        if(!couldBeLast)
+            out.writeBytes(",");
+        else {
+            if(this.root.getRight_sibling() != null || this.root.getLeft_child() != null) {
+                out.writeBytes(",");
+            }
+        }
+        RootedTreeNode child = root.getLeft_child();
+        while(child!=null){
+            if(child.getRight_sibling()==null)
+                (new RootedTree(child)).preorder(out, couldBeLast);
+            else
+                (new RootedTree(child)).preorder(out, false);
+            child=child.getRight_sibling();
+        }
+    }
 }
