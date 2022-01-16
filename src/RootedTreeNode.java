@@ -1,35 +1,52 @@
 public class RootedTreeNode {
-    private RootedTree parent;
-    private RootedTree left_child;
-    private RootedTree right_sibling;
+    private RootedTreeNode parent;
+    private RootedTreeNode left_child;
+    private RootedTreeNode right_sibling;
+    private int key;
 
-    public RootedTreeNode(){
+    public RootedTreeNode(int key){
         parent=null;
         left_child=null;
         right_sibling=null;
+        this.key =key;
     }
 
-    public RootedTree getParent() {
+    public RootedTreeNode(RootedTreeNode parent, RootedTreeNode left_child, RootedTreeNode right_sibling, int key) {
+        this.parent = parent;
+        this.left_child = left_child;
+        this.right_sibling = right_sibling;
+        this.key = key;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public RootedTreeNode getParent() {
         return parent;
     }
 
-    public RootedTree getLeft_child() {
+    public RootedTreeNode getLeft_child() {
         return left_child;
     }
 
-    public RootedTree getRight_sibling() {
+    public RootedTreeNode getRight_sibling() {
         return right_sibling;
     }
 
-    public void setParent(RootedTree parent) {
+    public void setParent(RootedTreeNode parent) {
         this.parent = parent;
     }
 
-    public void setLeft_child(RootedTree left_child) {
+    public void setLeft_child(RootedTreeNode left_child) {
         this.left_child = left_child;
     }
 
-    public void setRight_sibling(RootedTree right_sibling) {
+    public void setRight_sibling(RootedTreeNode right_sibling) {
         this.right_sibling = right_sibling;
     }
 }

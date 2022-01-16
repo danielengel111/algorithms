@@ -25,4 +25,7 @@ public class Queue<T> {
             return null;
         return first.getValue();
     }
+    public boolean isEmpty(){
+        return first == null;
+    }
 }
