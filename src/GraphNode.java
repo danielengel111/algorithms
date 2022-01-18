@@ -2,13 +2,26 @@ public class GraphNode
 {
     public DoubleLinkedNode OutNeighbors;
     public DoubleLinkedNode InNeighbors;
+    private int outDegree;
+    private int inDegree;
+    private DoubleLinkedNode refToSelf = null;
     public int key;
 
     public GraphNode(int key)
     {
         this.OutNeighbors = null;
         this.InNeighbors = null;
+        outDegree = 0;
+        inDegree = 0;
         this.key = key;
+    }
+
+    public DoubleLinkedNode getRefToSelf() {
+        return refToSelf;
+    }
+
+    public void setRefToSelf(DoubleLinkedNode refToSelf) {
+        this.refToSelf = refToSelf;
     }
 
     public int getKey()
@@ -26,6 +39,7 @@ public class GraphNode
         {
             this.OutNeighbors.son = new DoubleLinkedNode(this.OutNeighbors, null, node);
         }
+        outDegree++;
     }
     public void addInNeighbor(GraphNode node)
     {
@@ -37,30 +51,23 @@ public class GraphNode
         {
             this.InNeighbors.son = new DoubleLinkedNode(this.InNeighbors, null, node);
         }
+        inDegree++;
     }
 
 
-    public int getOutDegree()
-    {
-        DoubleLinkedNode temp = OutNeighbors;
-        int count = 0;
-        while(temp != null)
-        {
-            temp = temp.son;
-            count++;
-        }
-        return count;
+    public int getOutDegree() {
+        return outDegree;
     }
 
-    public int getInDegree()
-    {
-        DoubleLinkedNode temp = InNeighbors;
-        int count = 0;
-        while(temp != null)
-        {
-            temp = temp.son;
-            count++;
-        }
-        return count;
+    public void setOutDegree(int outDegree) {
+        this.outDegree = outDegree;
+    }
+
+    public int getInDegree() {
+        return inDegree;
+    }
+
+    public void setInDegree(int inDegree) {
+        this.inDegree = inDegree;
     }
 }
