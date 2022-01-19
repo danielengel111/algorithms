@@ -29,7 +29,7 @@ public class GraphNode
         return key;
     }
 
-    public void addOutNeighbor(GraphNode node)
+    public DoubleLinkedNode addOutNeighbor(GraphNode node)
     {
         if(this.OutNeighbors == null)
         {
@@ -37,11 +37,12 @@ public class GraphNode
         }
         else
         {
-            this.OutNeighbors.son = new DoubleLinkedNode(this.OutNeighbors, null, node);
+            this.OutNeighbors = new DoubleLinkedNode(null, this.OutNeighbors, node);
         }
         outDegree++;
+        return OutNeighbors;
     }
-    public void addInNeighbor(GraphNode node)
+    public DoubleLinkedNode addInNeighbor(GraphNode node)
     {
         if(this.InNeighbors == null)
         {
@@ -49,9 +50,10 @@ public class GraphNode
         }
         else
         {
-            this.InNeighbors.son = new DoubleLinkedNode(this.InNeighbors, null, node);
+            this.InNeighbors = new DoubleLinkedNode(null, this.InNeighbors, node);
         }
         inDegree++;
+        return InNeighbors;
     }
 
 
@@ -69,5 +71,11 @@ public class GraphNode
 
     public void setInDegree(int inDegree) {
         this.inDegree = inDegree;
+    }
+    public void decreaseInDegree(){
+        inDegree--;
+    }
+    public void decreaseOutDegree(){
+        outDegree--;
     }
 }
