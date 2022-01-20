@@ -41,7 +41,7 @@ public class DynamicGraph
         edge.getFrom().decreaseOutDegree();
         edge.setToReference(null);
     }
-    public rootedTree scc()
+    public RootedTree scc()
     {
         return null;
     }
@@ -49,5 +49,7 @@ public class DynamicGraph
     {
         return null;
     }
-
+    private RootedTree BFSInitialize(){
+        
+    }
 }

@@ -1,3 +1,4 @@
+enum Color{white, grey, black}
 public class GraphNode
 {
     public DoubleLinkedNode OutNeighbors;
@@ -6,6 +7,42 @@ public class GraphNode
     private int inDegree;
     private DoubleLinkedNode refToSelf = null;
     public int key;
+    private RootedTreeNode parent = null;
+    private int d = 0;
+    private int f =0;
+    private Color color = Color.white;
+
+    public RootedTreeNode getParent() {
+        return parent;
+    }
+
+    public void setParent(RootedTreeNode parent) {
+        this.parent = parent;
+    }
+
+    public int getD() {
+        return d;
+    }
+
+    public void setD(int d) {
+        this.d = d;
+    }
+
+    public int getF() {
+        return f;
+    }
+
+    public void setF(int f) {
+        this.f = f;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
     public GraphNode(int key)
     {
