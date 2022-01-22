@@ -165,8 +165,10 @@ public class DynamicGraph
         RootedTree bfsTree = new RootedTree(root);
         DoubleLinkedNode curNode = nodes;
         while(curNode!=null){
-            if(curNode.value == source)
+            if(curNode.value == source) {
+                curNode = curNode.son;
                 continue;
+            }
             curNode.value.setColor(Color.white);
             curNode.value.setD(-1); // -1 means the vertex is not reachable from source
             curNode.value.setParent(null);
