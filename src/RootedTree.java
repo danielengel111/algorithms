@@ -37,7 +37,7 @@ public class RootedTree
                 countCurrentPrint--;
                 while(currentNode!=null) {
                     if (countCurrentPrint == 0) {
-                        if (currentNode.getRight_sibling() != null) {
+                        if (currentNode.getRight_sibling() == null) {
                             out.writeBytes(String.valueOf(currentNode.getKey()));
                         }
                     } else {
@@ -51,7 +51,8 @@ public class RootedTree
                 }
             }
             // if we'll need to remove the final new line then add if(q.isEmpty())
-            out.writeBytes("\n");
+            if(!q.isEmpty())
+                out.writeBytes("\n");
         }
         // perhaps add out.flush()
     }
