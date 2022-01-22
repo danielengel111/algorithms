@@ -7,7 +7,7 @@ public class GraphNode
     private int inDegree;
     private DoubleLinkedNode refToDynamicSelf = null;
     public int key;
-    private RootedTreeNode parent = null;
+    private GraphNode parent = null;
     private int d = 0;
     private int f =0;
     private Color color = Color.white;
@@ -21,11 +21,11 @@ public class GraphNode
         this.refToRootedSelf = refToRootedSelf;
     }
 
-    public RootedTreeNode getParent() {
+    public GraphNode getParent() {
         return parent;
     }
 
-    public void setParent(RootedTreeNode parent) {
+    public void setParent(GraphNode parent) {
         this.parent = parent;
     }
 
@@ -61,6 +61,7 @@ public class GraphNode
         inDegree = 0;
         this.key = key;
     }
+
 
     public DoubleLinkedNode getRefToDynamicSelf() {
         return refToDynamicSelf;

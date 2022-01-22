@@ -4,7 +4,6 @@ public class RootedTreeNode {
     private RootedTreeNode right_sibling;
     private int key;
 
-
     public RootedTreeNode(int key){
         parent=null;
         left_child=null;
