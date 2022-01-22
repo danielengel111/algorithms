@@ -41,7 +41,8 @@ public class RootedTree
                             out.writeBytes(String.valueOf(currentNode.getKey()));
                         }
                     } else {
-                        out.writeBytes(String.valueOf(currentNode.getKey()) + ",");
+                        out.writeBytes(String.valueOf(currentNode.getKey()));
+                        out.writeBytes(",");
                     }
                     if (currentNode.getLeft_child() != null) {
                         q.insert(currentNode.getLeft_child());
