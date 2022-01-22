@@ -39,6 +39,9 @@ public class RootedTree
                     if (countCurrentPrint == 0) {
                         if (currentNode.getRight_sibling() == null) {
                             out.writeBytes(String.valueOf(currentNode.getKey()));
+                        }else {
+                            out.writeBytes(String.valueOf(currentNode.getKey()));
+                            out.writeBytes(",");
                         }
                     } else {
                         out.writeBytes(String.valueOf(currentNode.getKey()));
