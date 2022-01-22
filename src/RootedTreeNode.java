@@ -2,16 +2,8 @@ public class RootedTreeNode {
     private RootedTreeNode parent;
     private RootedTreeNode left_child;
     private RootedTreeNode right_sibling;
-    private GraphNode refToSelfInGraph;
     private int key;
 
-    public GraphNode getRefToSelfInGraph() {
-        return refToSelfInGraph;
-    }
-
-    public void setRefToSelfInGraph(GraphNode refToSelfInGraph) {
-        this.refToSelfInGraph = refToSelfInGraph;
-    }
 
     public RootedTreeNode(int key){
         parent=null;
@@ -28,24 +20,24 @@ public class RootedTreeNode {
     }
 
 
-    public RootedTreeNode addSibling(GraphNode node){
+    public void addSibling(GraphNode node){
         if(right_sibling==null){
             right_sibling = new RootedTreeNode(this.parent, null, null, node.key);
-            right_sibling.setRefToSelfInGraph(node);
-            return right_sibling;
+            node.setRefToRootedSelf(right_sibling);
+            return;
         }else
-            return right_sibling.addSibling(node);
+            right_sibling.addSibling(node);
     }
 
 
-    public RootedTreeNode addChild(GraphNode node){
+    public void addChild(GraphNode node){
         if(this.left_child==null) {
             left_child = new RootedTreeNode(this, null, null, node.key);
-            left_child.setRefToSelfInGraph(node);
-            return left_child;
+            node.setRefToRootedSelf(left_child);
+            return;
         }
         else
-            return left_child.addSibling(node);
+            left_child.addSibling(node);
     }
 
     public int getKey() {

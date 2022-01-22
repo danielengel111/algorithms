@@ -9,18 +9,18 @@ public class DynamicGraph
     {
         GraphNode newNode = new GraphNode(nodeKey);
         nodes = new DoubleLinkedNode(null, nodes, newNode);
-        newNode.setRefToSelf(nodes);
+        newNode.setRefToDynamicSelf(nodes);
         return newNode;
     }
     public void deleteNode(GraphNode node)
     {
         if(node.getInDegree()!=0 || node.getOutDegree()!=0)
             return;
-        if(node.getRefToSelf().isSingle()) {
+        if(node.getRefToDynamicSelf().isSingle()) {
             nodes = null;
-            node.setRefToSelf(null);
+            node.setRefToDynamicSelf(null);
         }else{
-            node.getRefToSelf().delete();
+            node.getRefToDynamicSelf().delete();
         }
     }
 
@@ -45,11 +45,27 @@ public class DynamicGraph
     {
         return null;
     }
-    public RootedTree bfs()
+    public RootedTree bfs(GraphNode source)
     {
+        RootedTree bfsTree = BFSInitialize(source);
+
         return null;
     }
-    private RootedTree BFSInitialize(){
-        
+    private RootedTree BFSInitialize(GraphNode source){
+        RootedTreeNode root  = new RootedTreeNode(source.key);
+        root.setRefToSelfInGraph(source);
+        RootedTree bfsTree = new RootedTree(root);
+        DoubleLinkedNode curNode = nodes;
+        while(curNode!=null){
+            if(curNode.value == source)
+                continue;
+            curNode.value.setColor(Color.white);
+            curNode.value.setD(-1); // -1 means the vertex is not reachable from source
+            curNode.value.setParent(null);
+        }
+        source.setD(0);
+        source.setColor(Color.grey);
+        source.setParent(null);
+        return bfsTree;
     }
 }

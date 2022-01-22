@@ -5,12 +5,21 @@ public class GraphNode
     public DoubleLinkedNode InNeighbors;
     private int outDegree;
     private int inDegree;
-    private DoubleLinkedNode refToSelf = null;
+    private DoubleLinkedNode refToDynamicSelf = null;
     public int key;
     private RootedTreeNode parent = null;
     private int d = 0;
     private int f =0;
     private Color color = Color.white;
+    private RootedTreeNode refToRootedSelf = null;
+
+    public RootedTreeNode getRefToRootedSelf() {
+        return refToRootedSelf;
+    }
+
+    public void setRefToRootedSelf(RootedTreeNode refToRootedSelf) {
+        this.refToRootedSelf = refToRootedSelf;
+    }
 
     public RootedTreeNode getParent() {
         return parent;
@@ -53,12 +62,12 @@ public class GraphNode
         this.key = key;
     }
 
-    public DoubleLinkedNode getRefToSelf() {
-        return refToSelf;
+    public DoubleLinkedNode getRefToDynamicSelf() {
+        return refToDynamicSelf;
     }
 
-    public void setRefToSelf(DoubleLinkedNode refToSelf) {
-        this.refToSelf = refToSelf;
+    public void setRefToDynamicSelf(DoubleLinkedNode refToDynamicSelf) {
+        this.refToDynamicSelf = refToDynamicSelf;
     }
 
     public int getKey()
