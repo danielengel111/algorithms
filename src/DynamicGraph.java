@@ -8,7 +8,13 @@ public class DynamicGraph
     public GraphNode insertNode(int nodeKey)
     {
         GraphNode newNode = new GraphNode(nodeKey);
-        nodes = new DoubleLinkedNode(null, nodes, newNode);
+        if(nodes == null){
+            nodes = new DoubleLinkedNode(null, null, newNode);
+        }else {
+            DoubleLinkedNode temp = new DoubleLinkedNode(null, nodes, newNode);
+            nodes.parent = temp;
+            nodes = temp;
+        }
         newNode.setRefToDynamicSelf(nodes);
         return newNode;
     }
@@ -16,11 +22,9 @@ public class DynamicGraph
     {
         if(node.getInDegree()!=0 || node.getOutDegree()!=0)
             return;
-        if(node.getRefToDynamicSelf().isSingle()) {
-            nodes = null;
-            node.setRefToDynamicSelf(null);
-        }else{
-            node.getRefToDynamicSelf().delete();
+        node.setRefToDynamicSelf(null);
+        if(node.getRefToDynamicSelf().delete()){
+            nodes = nodes.son;
         }
     }
 
@@ -136,7 +140,13 @@ public class DynamicGraph
         u.setColor(Color.black);
         time++;
         u.setF(time);
-        list = new DoubleLinkedNode(null, list, u);
+        if(list==null){
+            list = new DoubleLinkedNode(null, null, u);
+        }else {
+            DoubleLinkedNode temp = new DoubleLinkedNode(null, list, u);
+            list.parent = temp;
+            list = temp;
+        }
         return list;
     }
 
