@@ -10,11 +10,16 @@ public class DoubleLinkedNode
         this.son = son;
         this.value = value;
     }
-    public void delete(){
-        if(this.parent!=null)
+    public boolean delete(){
+        boolean isHead = true;
+        if(this.parent!=null) {
             this.parent.son = this.son;
-        if(this.son!=null)
-            this.son.parent=this.parent;
+            isHead = false;
+        }
+        if(this.son!=null) {
+            this.son.parent = this.parent;
+        }
+        return isHead;
     }
     public boolean isSingle(){
         return parent==null && son==null;

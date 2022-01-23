@@ -33,11 +33,15 @@ public class DynamicGraph
     }
     public void deleteEdge(GraphEdge edge)
     {
-        edge.getFromReference().delete();
+        if(edge.getFromReference().delete()){
+            edge.getTo().InNeighbors = edge.getTo().InNeighbors.son;
+        }
         edge.getTo().decreaseInDegree();
         edge.setFromReference(null);
 
-        edge.getToReference().delete();
+        if(edge.getToReference().delete()){
+            edge.getFrom().OutNeighbors = edge.getFrom().OutNeighbors.son;
+        }
         edge.getFrom().decreaseOutDegree();
         edge.setToReference(null);
     }
