@@ -84,7 +84,9 @@ public class GraphNode
         }
         else
         {
-            this.OutNeighbors = new DoubleLinkedNode(null, this.OutNeighbors, node);
+            DoubleLinkedNode temp = new DoubleLinkedNode(null, this.OutNeighbors, node);
+            this.OutNeighbors.parent = temp;
+            this.OutNeighbors = temp;
         }
         outDegree++;
         return OutNeighbors;
@@ -97,7 +99,9 @@ public class GraphNode
         }
         else
         {
-            this.InNeighbors = new DoubleLinkedNode(null, this.InNeighbors, node);
+            DoubleLinkedNode temp = new DoubleLinkedNode(null, this.InNeighbors, node);
+            this.InNeighbors.parent = temp;
+            this.InNeighbors = temp;
         }
         inDegree++;
         return InNeighbors;

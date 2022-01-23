@@ -55,6 +55,7 @@ public class DynamicGraph
             curNode.value.setD(-1);
             curNode.value.setF(-1);
             curNode.value.setParent(null);
+            curNode.value.setRefToRootedSelf(null);
             curNode = curNode.son;
         }
         int time = 0;
@@ -170,6 +171,7 @@ public class DynamicGraph
                 continue;
             }
             curNode.value.setColor(Color.white);
+            curNode.value.setRefToRootedSelf(null);
             curNode.value.setD(-1); // -1 means the vertex is not reachable from source
             curNode.value.setParent(null);
             curNode = curNode.son;
