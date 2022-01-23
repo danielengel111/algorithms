@@ -22,10 +22,10 @@ public class DynamicGraph
     {
         if(node.getInDegree()!=0 || node.getOutDegree()!=0)
             return;
-        node.setRefToDynamicSelf(null);
         if(node.getRefToDynamicSelf().delete()){
             nodes = nodes.son;
         }
+        node.setRefToDynamicSelf(null);
     }
 
     public GraphEdge insertEdge(GraphNode from, GraphNode to)
